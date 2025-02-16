@@ -22,7 +22,7 @@
     font-weight: 700;
     font-size: 24px;
 }
-.modalAdd, .modalEdit {
+.modalAdd, .modalEdit, .modalInfo {
     position: absolute;
     top: 0;
     left: 0;
@@ -67,4 +67,18 @@
     padding: 3vh;
     border-radius: 10px;
     gap: 2vh;
+}
+.modalInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+.modalInfo button {
+    font-weight: 700;
+    padding: 1vh;
+    border-radius: 10px;
+    color: white;
+    background-color: #C71585;
+    border: none;
+    outline: none;
 }

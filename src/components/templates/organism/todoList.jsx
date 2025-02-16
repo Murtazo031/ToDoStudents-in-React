@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import Card from "./molecules/card";
 import Button from "./molecules/atom/button";
@@ -49,10 +50,10 @@ export default function TodoList() {
   const [search, setSearch] = useState("");
 
   //SET FILTER BY STATUS
-  const [filterStatus,setFilterStatus] = useState("")
+  const [filterStatus, setFilterStatus] = useState("");
 
   //SET MODAL INFO
-  const [infoModal,setInfoModal] = useState(false)
+  const [infoModal, setInfoModal] = useState(false);
 
   //CHEK
   function cheked(id) {
@@ -119,7 +120,6 @@ export default function TodoList() {
   function openInfo(todo) {
     setInfoModal(todo); // Передаём объект todo в состояние
   }
-    
 
   return (
     <>
@@ -138,22 +138,25 @@ export default function TodoList() {
           }}
           placeholder="search"
         />
-      <select style={{
-        padding:"1.5vh",
-        borderRadius:"10px",
-        fontWeight:"700",
-        border:"none",
-        outline:"none",
-        boxShadow:"0px 0px 5px grey",
-        width:"16vw"        
-      }}
-      value={filterStatus}
-      onChange={(e)=>{setFilterStatus(e.target.value)}}
-      >
-        <option value="">ALL</option>
-        <option value="true">Avtive</option>
-        <option value="false">Inactive</option>
-      </select>
+        <select
+          style={{
+            padding: "1.5vh",
+            borderRadius: "10px",
+            fontWeight: "700",
+            border: "none",
+            outline: "none",
+            boxShadow: "0px 0px 5px grey",
+            width: "16vw",
+          }}
+          value={filterStatus}
+          onChange={(e) => {
+            setFilterStatus(e.target.value);
+          }}
+        >
+          <option value="">ALL</option>
+          <option value="true">Avtive</option>
+          <option value="false">Inactive</option>
+        </select>
         <Button
           Children={"Add +"}
           btnOnclick={() => setAddModal(!addModal)}
@@ -166,7 +169,9 @@ export default function TodoList() {
       <ul className="todoList">
         {todoList
           .filter((todo) => JSON.stringify(todo).includes(search))
-          .filter((todo)=>todo.studentStatus.toString().includes(filterStatus))
+          .filter((todo) =>
+            todo.studentStatus.toString().includes(filterStatus)
+          )
           .map((todo) => (
             <li key={todo.id} style={{ listStyle: "none" }}>
               <Card
@@ -203,14 +208,14 @@ export default function TodoList() {
                       btnOnclick={() => handleEdit(todo)}
                     />
                     <Button
-                    Children={"Ifo"}
-                    bgColor={"grey"}
-                    btnColor={"white"}
-                    p={"1.3vh 1.5vh"}
-                    br={"none"}
-                    brRadius={"50%"}
-                    btnShadow={"0px 0px 10px grey"}
-                    btnOnclick={()=>openInfo(todo)}
+                      Children={"Ifo"}
+                      bgColor={"grey"}
+                      btnColor={"white"}
+                      p={"1.3vh 1.5vh"}
+                      br={"none"}
+                      brRadius={"50%"}
+                      btnShadow={"0px 0px 10px grey"}
+                      btnOnclick={() => openInfo(todo)}
                     />
                   </>
                 }
@@ -298,19 +303,15 @@ export default function TodoList() {
         </div>
       )}
       {infoModal && typeof infoModal === "object" && (
-  <div className="modalInfo">
-    <Card
-      studentsAvatar={infoModal.studentsAvatar}
-      studentName={infoModal.studentName}
-      coursStudiing={infoModal.coursStudiing}
-    />
-    <Button
-      Children={"Close"}
-      btnOnclick={() => setInfoModal(false)}
-    />
-  </div>
-)}
-
+        <div className="modalInfo">
+          <Card
+            studentsAvatar={infoModal.studentsAvatar}
+            studentName={infoModal.studentName}
+            coursStudiing={infoModal.coursStudiing}
+          />
+          <Button Children={"Close"} btnOnclick={() => setInfoModal(false)} />
+        </div>
+      )}
     </>
   );
 }
