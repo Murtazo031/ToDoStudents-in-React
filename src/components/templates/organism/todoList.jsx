@@ -116,12 +116,10 @@ export default function TodoList() {
   }
 
   //OPEN INFO
-  function openInfo (todo){
-    setInfoModal(true)
-    infoModal.div.Card.studentsAvatar=todo.studentsAvatar
-    infoModal.div.Card.studentName=todo.studentName
-    infoModal.div.Card.coursStudiing=todo.coursStudiing
+  function openInfo(todo) {
+    setInfoModal(todo); // Передаём объект todo в состояние
   }
+    
 
   return (
     <>
@@ -299,16 +297,20 @@ export default function TodoList() {
           </div>
         </div>
       )}
-      {infoModal && 
-      <div>
-        <Card/>
-        <Button
-        Children={"close"}
-        btnOnclick={setInfoModal(false)}
-        />
+      {infoModal && typeof infoModal === "object" && (
+  <div className="modalInfo">
+    <Card
+      studentsAvatar={infoModal.studentsAvatar}
+      studentName={infoModal.studentName}
+      coursStudiing={infoModal.coursStudiing}
+    />
+    <Button
+      Children={"Close"}
+      btnOnclick={() => setInfoModal(false)}
+    />
+  </div>
+)}
 
-      </div>
-      }
     </>
   );
 }
