@@ -1,0 +1,47 @@
+.cardTodo{
+    width: 350px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #1E90FF ;
+    border-radius: 10%;
+    border-bottom-right-radius: 0px;
+    box-shadow: 0px 0px 12px #191970;
+    position: relative;
+}
+.cardTodo img {
+    padding: 1vh;
+    background-color: white;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+}
+.cardInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vh;
+}
+.cardInfo h1,h3,p{
+    padding: 1vh;
+    margin: 0;
+    border: 1px solid grey;
+    border-radius: 15px;
+    background-color: #000080;
+    color: white;
+}
+.btnDiv {
+    width: 60%;
+    padding-top: 2vh;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    gap: 2vh;
+}
+.btnDiv button {
+    font-weight: 700;
+}
